@@ -1,0 +1,27 @@
+<%= form_with(model: mill, local: true) do |form| %>
+  <% if mill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(mill.errors.count, "error") %> prohibited this record from being saved:</h2>
+
+      <ul>
+      <% mill.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :location %>
+    <%= form.text_field :location, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-success' %>
+  </div>
+<% end %>

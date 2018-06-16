@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<div class="mb-4">
+	<h1>Mills</h1>
+
+	<%= link_to 'Add a new mill', new_mill_path, class: 'btn btn-primary' %>
+</div>
+
+<div class="row">
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th>Name</th>
+				<th>Location</th>
+				<th colspan="3"></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @mills.each do |mill| %>
+				<tr>
+					<td><%= mill.name %></td>
+					<td><%= mill.location %></td>
+					<td><%= link_to 'Show', mill %></td>
+					<td><%= link_to 'Edit', edit_mill_path(mill) %></td>
+					<td><%= link_to 'Destroy', mill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+

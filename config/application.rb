@@ -29,6 +29,7 @@ module Estimator
 
     config.generators do |g|
       g.jbuilder false
+      g.scaffold_stylesheet false
     end
   end
 end

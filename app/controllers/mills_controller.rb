@@ -69,6 +69,6 @@ class MillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mill_params
-      params.require(:mill).permit(:name, :location)
+      params.require(:mill).permit(:name, :location, :code)
     end
 end

@@ -10,15 +10,17 @@
 	<table class="table">
 		<thead class="thead-dark">
 			<tr>
-				<th>Name</th>
-				<th>Location</th>
-				<th colspan="3"></th>
+				<th scope="col">Mill Code</th>
+				<th scope="col">Name</th>
+				<th scope="col">Location</th>
+				<th scope="col" colspan="3"></th>
 			</tr>
 		</thead>
 
 		<tbody>
 			<% @mills.each do |mill| %>
 				<tr>
+					<th scope="row"><%= link_to mill.code, mill %></th>
 					<td><%= mill.name %></td>
 					<td><%= mill.location %></td>
 					<td><%= link_to 'Show', mill %></td>

@@ -64,7 +64,7 @@ class MillsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_mill
-      @mill = Mill.find(params[:id])
+      @mill = Mill.find_by(code: params[:code])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

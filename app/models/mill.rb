@@ -1,4 +1,6 @@
 class Mill < ApplicationRecord
+  include WhitespaceStripper
+
   validates :name, presence: true
   validates :location, presence: true
   validates :code, presence: true, uniqueness: true

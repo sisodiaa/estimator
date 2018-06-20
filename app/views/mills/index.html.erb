@@ -11,7 +11,7 @@
 				<th scope="col">Mill Code</th>
 				<th scope="col">Name</th>
 				<th scope="col">Location</th>
-				<th scope="col" colspan="3"></th>
+				<th scope="col" colspan="4"></th>
 			</tr>
 		</thead>
 
@@ -21,6 +21,7 @@
 					<th scope="row"><%= link_to mill.code, mill %></th>
 					<td><%= mill.name %></td>
 					<td><%= mill.location %></td>
+					<td><%= link_to 'Machines', mill_machines_path(mill) %></td>
 					<td><%= link_to 'Show', mill %></td>
 					<td><%= link_to 'Edit', edit_mill_path(mill) %></td>
 					<td><%= link_to 'Destroy', mill, method: :delete, data: { confirm: 'Are you sure?' } %></td>

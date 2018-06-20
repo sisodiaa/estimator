@@ -31,3 +31,8 @@
 
 en:
   hello: "Hello world"
+  helpers:
+    submit:
+      mill_machine:
+        create: "Add machine to mill"
+        update: "Edit Record"

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mill: one
+  machine: one
+  units: 1
+
+two:
+  mill: two
+  machine: two
+  units: 1

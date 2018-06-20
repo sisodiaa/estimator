@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_17_131724) do
+ActiveRecord::Schema.define(version: 2018_06_19_113832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 2018_06_17_131724) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "mill_machines", force: :cascade do |t|
+    t.bigint "mill_id"
+    t.bigint "machine_id"
+    t.integer "quantity", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["machine_id"], name: "index_mill_machines_on_machine_id"
+    t.index ["mill_id", "machine_id"], name: "index_mill_machines_on_mill_id_and_machine_id", unique: true
+    t.index ["mill_id"], name: "index_mill_machines_on_mill_id"
+  end
+
   create_table "mills", force: :cascade do |t|
     t.string "name"
     t.string "location"
@@ -33,4 +44,6 @@ ActiveRecord::Schema.define(version: 2018_06_17_131724) do
     t.index ["code"], name: "index_mills_on_code", unique: true
   end
 
+  add_foreign_key "mill_machines", "machines"
+  add_foreign_key "mill_machines", "mills"
 end

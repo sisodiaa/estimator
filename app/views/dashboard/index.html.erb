@@ -1,2 +1,39 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<div class="row my-4">
+	<div class="col-9">
+		<div class="card-deck">
+			<div class="card">
+				<h5 class="card-header">Search by Machine's Maker</h5>
+				<div class="card-body">
+					<%= form_with url: search_path, method: :get, local: true do |form| %>
+						<%= form.hidden_field :type, value: 'maker' %>
+						<div class="form-group">
+							<%= form.label :maker %>
+							<%= form.select :maker, options_for_select(Machine.distinct.pluck(:make)), {}, class: 'form-control' %>
+						</div>
+
+						<div class="actions">
+							<%= form.submit 'Search', class: 'btn btn-primary' %>
+						</div>
+					<% end %>
+				</div>
+			</div>
+
+			<div class="card">
+				<h5 class="card-header">Search by Machine's Model</h5>
+				<div class="card-body">
+					<%= form_with url: search_path, method: :get, local: true do |form| %>
+						<%= form.hidden_field :type, value: 'model' %>
+						<div class="form-group">
+							<%= form.label :model, 'Model' %>
+							<%= form.select :model, grouped_options_for_select(machines_list), {}, class: 'form-control' %>
+						</div>
+
+						<div class="actions">
+							<%= form.submit 'Search', class: 'btn btn-primary' %>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

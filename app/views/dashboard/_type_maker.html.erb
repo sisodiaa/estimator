@@ -1,0 +1,17 @@
+<div class="row my-4">
+	<h2 class="font-weight-light text-muted">Mills with Machines by <%= metadata %></h2>
+</div>
+<div class="row">
+	<table class="table table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">Name</th>
+				<th scope="col">Quantity</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<%= render partial: 'type_maker_result', collection: results, as: 'result' %>
+		</tbody>
+	</table>
+</div>

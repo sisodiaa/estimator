@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :belts
   resources :machines
 
   resources :mills, param: :code do

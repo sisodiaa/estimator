@@ -1,0 +1,27 @@
+<div class="mb-4">
+	<h1>Belts</h1>
+
+	<%= link_to 'New Belt', new_belt_path, class: 'btn btn-primary' %>
+</div>
+
+<div class="row">
+	<table class="table table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">Grade</th>
+				<th scope="col" colspan="3"></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @belts.each do |belt| %>
+				<tr>
+					<td><%= belt.grade %></td>
+					<td><%= link_to 'Show', belt %></td>
+					<td><%= link_to 'Edit', edit_belt_path(belt) %></td>
+					<td><%= link_to 'Destroy', belt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

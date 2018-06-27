@@ -15,6 +15,8 @@ class QueryResult
     case query_type
     when "maker", "model"
       mills_list_with_machine_count
+    when "grade"
+      list_of_mills
     end
   end
 
@@ -28,10 +30,23 @@ class QueryResult
     end
 
     Struct.new(:template, :metadata, :result)
-      .new(template, response[1], mills_list)
+      .new(template, metadata, mills_list)
+  end
+
+  def list_of_mills
+    mills_list = response.last.map do |row|
+      Struct.new(:mill).new(row)
+    end
+
+    Struct.new(:template, :metadata, :result)
+      .new(template, metadata, mills_list)
   end
 
   def template
     "type_#{query_type}"
+  end
+  
+  def metadata
+    response[1]
   end
 end

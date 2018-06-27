@@ -17,6 +17,8 @@ class QueryRunner
       get_mills_list_with_machine_count_query_by_machine_maker
     when "model"
       get_mills_list_with_machine_count_query_by_machine_model
+    when "grade"
+      get_mills_list_by_belt_grade
     end
   end
 
@@ -46,6 +48,13 @@ class QueryRunner
     [query_type, machine_name, mills_with_count]
   end
 
+  def get_mills_list_by_belt_grade
+    mill_machines = MillMachine.includes(:belts).where(belts: { id: belt_id })
+    mills = Mill.where(mill_machines: mill_machines)
+
+    [query_type, belt_grade, mills]
+  end
+
   def machine_maker
     params[:maker]
   end
@@ -53,6 +62,15 @@ class QueryRunner
   def machine_model
     params[:model]
   end
+
+  def belt_id
+    params[:grade]
+  end
+  
+  def belt_grade
+    Belt.find(belt_id).grade
+  end
+
 
   def machine_name
     Machine.find(params[:model]).machine_name

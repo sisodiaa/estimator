@@ -1,7 +1,7 @@
 <div class="mb-4">
 	<h1>Machines in <%= @mill.name %></h1>
 
-	<%= link_to 'Add a new machine', new_mill_machine_path, class: 'btn btn-primary' %>
+	<%= link_to 'Add a new machine', new_mill_machine_path(@mill), class: 'btn btn-primary' %>
 </div>
 
 <div class="row">
@@ -11,7 +11,7 @@
 				<th scope="col">Mill</th>
 				<th scope="col">Machine</th>
 				<th scope="col">Units</th>
-				<th scope="col" colspan="3"></th>
+				<th scope="col" colspan="4"></th>
 			</tr>
 		</thead>
 
@@ -21,6 +21,7 @@
 					<td><%= mill_machine.mill.name %></td>
 					<td><%= mill_machine.machine.machine_name %></td>
 					<td><%= mill_machine.quantity %></td>
+					<td><%= link_to 'Belts', mill_machine_belts_path(@mill, mill_machine) %></td>
 					<td><%= link_to 'Show', mill_machine_path(@mill, mill_machine) %></td>
 					<td><%= link_to 'Edit', edit_mill_machine_path(@mill, mill_machine) %></td>
 					<td><%= link_to 'Destroy', mill_machine_path(@mill, mill_machine), method: :delete, data: { confirm: 'Are you sure?' } %></td>

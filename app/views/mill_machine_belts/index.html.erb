@@ -1,0 +1,26 @@
+<div class="mb-4">
+	<h1>Belts for <%= @mill_machine.machine.machine_name %> in <%= @mill.name %></h1>
+
+	<%= link_to 'New Mill Machine Belt', new_mill_machine_belt_path(@mill, @mill_machine), class: 'btn btn-primary' %>
+</div>
+
+<div class="row">
+	<table class="table table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">Belt</th>
+				<th scope="col" colspan="2"></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @mill_machine_belts.each do |mill_machine_belt| %>
+				<tr>
+					<td><%= mill_machine_belt.belt.grade %></td>
+					<td><%= link_to 'Show', mill_machine_belt_path(@mill, @mill_machine, mill_machine_belt) %></td>
+					<td><%= link_to 'Destroy', mill_machine_belt_path(@mill, @mill_machine, mill_machine_belt), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

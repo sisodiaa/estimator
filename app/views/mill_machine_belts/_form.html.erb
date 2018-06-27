@@ -1,0 +1,22 @@
+<%= form_with(model: mill_machine_belt, local: true) do |form| %>
+  <% if mill_machine_belt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(mill_machine_belt.errors.count, "error") %> prohibited this mill_machine_belt from being saved:</h2>
+
+      <ul>
+      <% mill_machine_belt.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :belt_id %>
+		<%= form.select :belt_id, options_for_select(Belt.pluck(:grade, :id)), { include_blank: true }, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

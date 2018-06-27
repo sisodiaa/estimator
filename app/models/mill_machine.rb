@@ -2,6 +2,8 @@ class MillMachine < ApplicationRecord
   # Associations
   belongs_to :mill
   belongs_to :machine
+  has_many :mill_machine_belts, dependent: :destroy
+  has_many :belts, through: :mill_machine_belts
 
 
   # Validations

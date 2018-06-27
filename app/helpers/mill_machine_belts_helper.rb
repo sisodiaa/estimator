@@ -1,0 +1,2 @@
+module MillMachineBeltsHelper
+end

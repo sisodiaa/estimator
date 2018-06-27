@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_24_134841) do
+ActiveRecord::Schema.define(version: 2018_06_25_150055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 2018_06_24_134841) do
     t.string "sub_section"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "mill_machine_belts", force: :cascade do |t|
+    t.bigint "mill_machine_id"
+    t.bigint "belt_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["belt_id"], name: "index_mill_machine_belts_on_belt_id"
+    t.index ["mill_machine_id", "belt_id"], name: "index_mill_machine_belts_on_mill_machine_id_and_belt_id", unique: true
+    t.index ["mill_machine_id"], name: "index_mill_machine_belts_on_mill_machine_id"
   end
 
   create_table "mill_machines", force: :cascade do |t|
@@ -50,6 +60,8 @@ ActiveRecord::Schema.define(version: 2018_06_24_134841) do
     t.index ["code"], name: "index_mills_on_code", unique: true
   end
 
+  add_foreign_key "mill_machine_belts", "belts"
+  add_foreign_key "mill_machine_belts", "mill_machines"
   add_foreign_key "mill_machines", "machines"
   add_foreign_key "mill_machines", "mills"
 end

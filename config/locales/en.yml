@@ -36,3 +36,6 @@ en:
       mill_machine:
         create: "Add machine to mill"
         update: "Edit Record"
+      mill_machine_belt:
+        create: "Add Belt to Machine"
+        update: "Edit Record"

@@ -5,7 +5,7 @@
 
 		<%= render partial: 'form', locals: { mill: @mill, mill_machine: @mill_machine, url: mill_machine_form_path(@mill_machine) } %>
 
-		<%= link_to 'Show', @mill_machine, class: 'btn btn-outline-primary mt-3' %>
-		<%= link_to 'Back', mill_machines_path, class: 'btn btn-outline-primary mt-3' %>
+		<%= link_to 'Show', mill_machine_path(@mill, @mill_machine), class: 'btn btn-outline-primary mt-3' %>
+		<%= link_to 'Back to all records', mill_machines_path(@mill), class: 'btn btn-outline-primary mt-3' %>
 	</div>
 </div>

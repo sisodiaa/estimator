@@ -12,4 +12,15 @@ class Belt < ApplicationRecord
   
   # Validations
   validates :grade, presence: true
+
+
+  # Scopes
+  scope :for_machines, lambda { |machines|
+    includes(:mill_machines).where(mill_machines: { machine_id: machines })
+  }
+
+  scope :procured_for_machines_in_mill, lambda { |mill, machines|
+    includes(:mill_machines)
+      .where(mill_machines: { mill_id: mill, machine_id: machines })
+  }
 end

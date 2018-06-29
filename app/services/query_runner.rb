@@ -19,11 +19,9 @@ class QueryRunner
       get_mills_list_with_machine_count_query_by_machine_model
     when "grade"
       get_mills_list_by_belt_grade
+    when 'recommend'
+      get_belt_recommendation_list
     end
-  end
-
-  def query_type
-    params[:type]
   end
 
   def get_mills_list_with_machine_count_query_by_machine_maker
@@ -55,6 +53,22 @@ class QueryRunner
     [query_type, belt_grade, mills]
   end
 
+  def get_belt_recommendation_list
+    mill = Mill.find_by(code: mill_code)
+    installed_machines = mill.machines
+    belts_list = Belt.for_machines(installed_machines)
+    procured_belts_list = Belt
+      .procured_for_machines_in_mill(mill, installed_machines)
+
+    recommended_belts_list = belts_list - procured_belts_list
+
+    [query_type, mill.name, recommended_belts_list]
+  end
+
+  def query_type
+    params[:type]
+  end
+
   def machine_maker
     params[:maker]
   end
@@ -71,8 +85,11 @@ class QueryRunner
     Belt.find(belt_id).grade
   end
 
-
   def machine_name
     Machine.find(params[:model]).machine_name
+  end
+
+  def mill_code
+    params[:mill]
   end
 end

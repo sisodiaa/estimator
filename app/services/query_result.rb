@@ -17,6 +17,8 @@ class QueryResult
       mills_list_with_machine_count
     when "grade"
       list_of_mills
+    when "recommend"
+      list_of_belt_grades
     end
   end
 
@@ -40,6 +42,15 @@ class QueryResult
 
     Struct.new(:template, :metadata, :result)
       .new(template, metadata, mills_list)
+  end
+
+  def list_of_belt_grades
+    belt_grades_list = response.last.map do |row|
+      Struct.new(:belt).new(row)
+    end
+
+    Struct.new(:template, :metadata, :result)
+      .new(template, metadata, belt_grades_list)
   end
 
   def template

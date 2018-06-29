@@ -1,7 +1,8 @@
-<div class="mb-4">
-	<h1>Mills</h1>
-
-	<%= link_to 'Add a new mill', new_mill_path, class: 'btn btn-primary' %>
+<%= render partial: "shared/breadcrumbs", object: @breadcrumbs, as: 'items' %>
+<div class="row">
+	<div class="mb-4">
+		<%= link_to 'Add a new mill', new_mill_path, class: 'btn btn-primary' %>
+	</div>
 </div>
 
 <div class="row">
@@ -11,20 +12,22 @@
 				<th scope="col">Mill Code</th>
 				<th scope="col">Name</th>
 				<th scope="col">Location</th>
-				<th scope="col" colspan="4"></th>
+				<th scope="col" colspan="2"></th>
 			</tr>
 		</thead>
 
 		<tbody>
 			<% @mills.each do |mill| %>
 				<tr>
-					<th scope="row"><%= link_to mill.code, mill %></th>
+					<th scope="row"><%= mill.code %></th>
 					<td><%= mill.name %></td>
 					<td><%= mill.location %></td>
-					<td><%= link_to 'Machines', mill_machines_path(mill) %></td>
-					<td><%= link_to 'Show', mill %></td>
-					<td><%= link_to 'Edit', edit_mill_path(mill) %></td>
-					<td><%= link_to 'Destroy', mill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					<td class="btn-group pt-2">
+						<%= link_to 'Show', mill, class: 'btn btn-sm btn-outline-secondary' %>
+						<%= link_to 'Edit', edit_mill_path(mill), class: 'btn btn-sm btn-outline-secondary' %>
+						<%= link_to 'Destroy', mill, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-secondary' %>
+					</td>
+					<td class="pt-2"><%= link_to 'Machines in mill', mill_machines_path(mill), class: 'btn btn-sm btn-outline-secondary' %></td>
 				</tr>
 			<% end %>
 		</tbody>

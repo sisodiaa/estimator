@@ -1,41 +1,27 @@
 <div class="row">
-	<div class="col-2 text-right">
-		<strong>Make:</strong>
-	</div>
-	<div class="col-5">
-		<%= @machine.make %>
-	</div>
+	<table class="table table-bordered w-50">
+		<tr>
+			<th>Make</th>
+			<td><%= @machine.make %></td>
+		</tr>
+		<tr>
+			<th>Model</th>
+			<td><%= @machine.model %></td>
+		</tr>
+		<tr>
+			<th>Section</th>
+			<td><%= @machine.section %></td>
+		</tr>
+		<tr>
+			<th>Sub Section</th>
+			<td><%= @machine.sub_section %></td>
+		</tr>
+	</table>
 </div>
 
-<div class="row">
-	<div class="col-2 text-right">
-		<strong>Model:</strong>
-	</div>
-	<div class="col-5">
-		<%= @machine.model %>
-	</div>
-</div>
 
 <div class="row">
-	<div class="col-2 text-right">
-		<strong>Section:</strong>
-	</div>
-	<div class="col-5">
-		<%= @machine.section %>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-2 text-right">
-		<strong>Sub Section:</strong>
-	</div>
-	<div class="col-5">
-		<%= @machine.sub_section %>
-	</div>
-</div>
-
-<div class="row">
-	<div class="offset-md-1">
+	<div class="btn-group">
 		<%= link_to 'Edit record', edit_machine_path(@machine), class: 'btn btn-outline-primary mt-3' %>
 		<%= link_to 'Back to all records', machines_path, class: 'btn btn-outline-primary mt-3' %>
 	</div>

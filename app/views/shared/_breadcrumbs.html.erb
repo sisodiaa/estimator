@@ -1,0 +1,17 @@
+<div class="row">
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<% items.each do |item| %>
+				<% if item.kind_of?(Array) %>
+					<li class="breadcrumb-item">
+						<%= link_to item.first, item.last %>
+					</li>
+				<% else %>
+					<li class="breadcrumb-item active">
+						<%= item %>
+					</li>
+				<% end %>
+			<% end %>
+		</ol>
+	</nav>
+</div>

@@ -1,10 +1,15 @@
+<%= render partial: "shared/breadcrumbs", object: @breadcrumbs, as: 'items' %>
+
 <div class="row">
-	<div class="col-6">
+	<div class="col-6 card">
 		<h1>New Belt</h1>
 		<hr/>
 
 		<%= render 'form', mill_machine_belt: @mill_machine_belt %>
 
-		<%= link_to 'Back to all records', mill_machine_belts_path(@mill, @mill_machine), class: 'btn btn-outline-primary mt-3' %>
+		<%= link_to 'Back to all records',
+				mill_machine_belts_path(@mill, @mill_machine),
+				class: 'btn btn-outline-primary my-3'
+		%>
 	</div>
 </div>

@@ -50,7 +50,11 @@ class QueryRunner
     mill_machines = MillMachine.includes(:belts).where(belts: { id: belt_id })
     mills = Mill.where(mill_machines: mill_machines)
 
-    [query_type, belt_grade, mills]
+    mills_with_count = mills.map do |mill|
+      [mill, MillMachineBelt.count_of_belts_in_mill(belt_id, mill)]
+    end
+
+    [query_type, belt_grade, mills_with_count]
   end
 
   def get_belt_recommendation_list
@@ -80,7 +84,7 @@ class QueryRunner
   def belt_id
     params[:grade]
   end
-  
+
   def belt_grade
     Belt.find(belt_id).grade
   end

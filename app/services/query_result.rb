@@ -16,7 +16,7 @@ class QueryResult
     when "maker", "model"
       mills_list_with_machine_count
     when "grade"
-      list_of_mills
+      mills_list_with_belt_count
     when "recommend"
       list_of_belt_grades
     end
@@ -35,9 +35,9 @@ class QueryResult
       .new(template, metadata, mills_list)
   end
 
-  def list_of_mills
+  def mills_list_with_belt_count
     mills_list = response.last.map do |row|
-      Struct.new(:mill).new(row)
+      Struct.new(:mill, :quantity).new(row.first, row.last)
     end
 
     Struct.new(:template, :metadata, :result)

@@ -1,6 +1,7 @@
 class MillMachinesController < ApplicationController
   before_action :set_mill
   before_action :set_mill_machine, only: [:show, :edit, :update, :destroy]
+  before_action :set_breadcrumbs
 
   # GET /mill_machines
   # GET /mill_machines.json
@@ -75,5 +76,9 @@ class MillMachinesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def mill_machine_params
       params.require(:mill_machine).permit(:machine_id, :quantity)
+    end
+
+    def set_breadcrumbs
+      @breadcrumbs = [['Home', root_path], [@mill.name.titleize, mill_path(@mill)], 'Machines']
     end
 end

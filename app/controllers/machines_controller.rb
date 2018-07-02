@@ -1,4 +1,5 @@
 class MachinesController < ApplicationController
+  before_action :set_breadcrumbs
   before_action :set_machine, only: [:show, :edit, :update, :destroy]
 
   # GET /machines
@@ -63,6 +64,10 @@ class MachinesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_breadcrumbs
+      @breadcrumbs = [['Home', root_path], 'Machines']
+    end
+
     def set_machine
       @machine = Machine.find(params[:id])
     end

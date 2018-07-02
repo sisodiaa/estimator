@@ -2,6 +2,7 @@ class MillMachineBeltsController < ApplicationController
   before_action :set_mill
   before_action :set_mill_machine
   before_action :set_mill_machine_belt, only: [:show, :edit, :update, :destroy]
+  before_action :set_breadcrumbs
 
   # GET /mill_machine_belts
   # GET /mill_machine_belts.json
@@ -92,5 +93,14 @@ class MillMachineBeltsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def mill_machine_belt_params
       params.require(:mill_machine_belt).permit(:belt_id)
+    end
+
+    def set_breadcrumbs
+      @breadcrumbs = [
+        ['Home', root_path],
+        [@mill.name.titleize, mill_path(@mill)],
+        [@mill_machine.machine.machine_name.titleize, mill_machine_path(@mill, @mill_machine)],
+        'Belts'
+      ]
     end
 end

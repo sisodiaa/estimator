@@ -1,4 +1,5 @@
 class BeltsController < ApplicationController
+  before_action :set_breadcrumbs
   before_action :set_belt, only: [:show, :edit, :update, :destroy]
 
   # GET /belts
@@ -63,6 +64,10 @@ class BeltsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_breadcrumbs
+      @breadcrumbs = [['Home', root_path], 'Belts']
+    end
+
     def set_belt
       @belt = Belt.find(params[:id])
     end

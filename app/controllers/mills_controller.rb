@@ -1,5 +1,6 @@
 class MillsController < ApplicationController
   before_action :set_mill, only: [:show, :edit, :update, :destroy]
+  before_action :set_breadcrumbs
 
   # GET /mills
   # GET /mills.json
@@ -63,6 +64,10 @@ class MillsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_breadcrumbs
+      @breadcrumbs = [['Home', root_path], 'Mills']
+    end
+
     def set_mill
       @mill = Mill.find_by(code: params[:code])
     end

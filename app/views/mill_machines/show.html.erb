@@ -18,5 +18,5 @@
 		<%= link_to 'Edit record', edit_mill_machine_path(@mill, @mill_machine), class: 'btn btn-outline-primary mt-3' %>
 		<%= link_to 'Back to all records', mill_machines_path(@mill), class: 'btn btn-outline-primary mt-3' %>
 	</div>
-	<%= link_to 'Add a new machine', new_mill_machine_path(@mill), class: 'btn btn-primary mt-3' %>
+	<%= link_to 'Belts in Machine', mill_machine_belts_path(@mill, @mill_machine), class: 'btn btn-outline-primary mt-3' %>
 </div>

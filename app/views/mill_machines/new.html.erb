@@ -1,10 +1,19 @@
+<%= render partial: "shared/breadcrumbs", object: @breadcrumbs, as: 'items' %>
+
 <div class="row">
-	<div class="col-6">
-		<h1>Add Machine to Mill</h1>
+	<div class="col-6 card">
+		<h2 class="mt-2">Add Machine to Mill</h2>
 		<hr/>
 
-		<%= render partial: 'form', locals: { mill: @mill, mill_machine: @mill_machine, url: mill_machine_form_path(@mill_machine) } %>
+		<%= render partial: 'form',
+							 locals: {
+												 mill: @mill,
+												 mill_machine: @mill_machine,
+												 url: mill_machine_form_path(@mill_machine)
+		                   }
+		%>
 
-		<%= link_to 'Back to all records', mill_machines_path(@mill), class: 'btn btn-outline-primary mt-3' %>
+		<%= link_to 'Back to all records', mill_machines_path(@mill),
+			class: 'btn btn-outline-primary my-3' %>
 	</div>
 </div>

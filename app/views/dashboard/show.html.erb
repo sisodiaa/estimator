@@ -1,2 +1,5 @@
 <%= render partial: "shared/breadcrumbs", object: @breadcrumbs, as: 'items' %>
-<%= render partial: @result.template, locals: { results: @result.result, metadata: @result.metadata } %>
+
+<% if @result.result %>
+	<%= render partial: @result.template, locals: { results: @result.result, metadata: @result.metadata } %>
+<% end %>

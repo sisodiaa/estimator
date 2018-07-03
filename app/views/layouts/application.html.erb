@@ -11,21 +11,28 @@
 
   <body>
 		<%= render "shared/navigation" %>
-		<div class="row mt-3 mx-1">
-			<div class="container col-2">
-				<div class="list-group font-weight-bold">
-					<%= link_to 'Dashboard', root_path, class: "list-group-item list-group-item-action text-secondary" %>
-					<%= link_to 'Mills', mills_path, class: "list-group-item list-group-item-action text-secondary" %>
-					<%= link_to 'Machines', machines_path, class: "list-group-item list-group-item-action text-secondary" %>
-					<%= link_to 'Belts', belts_path, class: "list-group-item list-group-item-action text-secondary" %>
+		<% if user_signed_in? %>
+			<div class="row mt-3 mx-1">
+				<div class="container col-2">
+					<div class="list-group font-weight-bold">
+						<%= link_to 'Dashboard', root_path, class: "list-group-item list-group-item-action text-secondary" %>
+						<%= link_to 'Mills', mills_path, class: "list-group-item list-group-item-action text-secondary" %>
+						<%= link_to 'Machines', machines_path, class: "list-group-item list-group-item-action text-secondary" %>
+						<%= link_to 'Belts', belts_path, class: "list-group-item list-group-item-action text-secondary" %>
+					</div>
+				</div>
+				<div class="container col-10">
+					<div class="mx-3">
+						<%= flash_messages %>
+						<%= yield %>
+					</div>
 				</div>
 			</div>
-			<div class="container col-10">
-				<div class="mx-3">
-					<%= flash_messages %>
-					<%= yield %>
-				</div>
+		<% else %>
+			<div class="container w-25">
+				<%= flash_messages %>
+				<%= yield %>
 			</div>
-		</div>
+		<% end %>
   </body>
 </html>

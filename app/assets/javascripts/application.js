@@ -13,3 +13,23 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+
+document.addEventListener("turbolinks:load", function() {
+  var el = document.querySelector('span[aria-hidden=true]');
+
+  if (el) {
+    function removeFadeOut( el, speed ) {
+      var seconds = speed/1000;
+
+      el.style.opacity = 0;
+      setTimeout(function() {
+        el.parentNode.removeChild(el);
+      }, speed);
+    }
+
+    el.addEventListener("click", function() {
+      removeFadeOut(el.parentNode.parentNode, 750);
+    });
+  }
+});

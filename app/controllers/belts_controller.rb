@@ -1,4 +1,5 @@
 class BeltsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_breadcrumbs
   before_action :set_belt, only: [:show, :edit, :update, :destroy]
 

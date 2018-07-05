@@ -1,4 +1,5 @@
 class MillsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_mill, only: [:show, :edit, :update, :destroy]
   before_action :set_breadcrumbs
 

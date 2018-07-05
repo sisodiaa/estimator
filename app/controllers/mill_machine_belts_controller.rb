@@ -1,4 +1,5 @@
 class MillMachineBeltsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_mill
   before_action :set_mill_machine
   before_action :set_mill_machine_belt, only: [:show, :edit, :update, :destroy]

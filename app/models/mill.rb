@@ -1,9 +1,14 @@
 class Mill < ApplicationRecord
   include WhitespaceStripper
 
+
   # Associations
   has_many :mill_machines, dependent: :destroy
   has_many :machines, through: :mill_machines
+
+
+  # Callbacks
+  before_save :set_attributes_case
 
 
   # Validations
@@ -21,5 +26,11 @@ class Mill < ApplicationRecord
   # methods
   def to_param
     code
+  end
+
+  def set_attributes_case
+    name.downcase!
+    location.downcase!
+    code.downcase!
   end
 end

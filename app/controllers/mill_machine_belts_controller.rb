@@ -99,7 +99,7 @@ class MillMachineBeltsController < ApplicationController
       @breadcrumbs = [
         ['Home', root_path],
         [@mill.name.titleize, mill_path(@mill)],
-        [@mill_machine.machine.machine_name.titleize, mill_machine_path(@mill, @mill_machine)],
+        [@mill_machine.machine.machine_name, mill_machine_path(@mill, @mill_machine)],
         'Belts'
       ]
     end

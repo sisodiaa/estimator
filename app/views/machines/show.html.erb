@@ -4,7 +4,7 @@
 	<table class="table table-bordered w-50">
 		<tr>
 			<th>Make</th>
-			<td><%= @machine.make %></td>
+			<td><%= @machine.make.titleize %></td>
 		</tr>
 		<tr>
 			<th>Model</th>
@@ -12,11 +12,11 @@
 		</tr>
 		<tr>
 			<th>Section</th>
-			<td><%= @machine.section %></td>
+			<td><%= @machine.section.titleize %></td>
 		</tr>
 		<tr>
 			<th>Sub Section</th>
-			<td><%= @machine.sub_section %></td>
+			<td><%= @machine.sub_section.titleize %></td>
 		</tr>
 	</table>
 </div>

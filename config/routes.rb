@@ -6,12 +6,13 @@ Rails.application.routes.draw do
   end
 
   resources :belts
-  resources :machines
+
+  resources :machines do
+    resources :machine_belts, as: 'belts', path: '/belts'
+  end
 
   resources :mills, param: :code do
-    resources :mill_machines, as: 'machines', path: '/machines' do
-      resources :mill_machine_belts, as: 'belts', path: '/belts'
-    end
+    resources :mill_machines, as: 'machines', path: '/machines'
   end
 
   get '/search', to: 'dashboard#show', as: 'search'

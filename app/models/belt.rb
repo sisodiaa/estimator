@@ -6,6 +6,9 @@ class Belt < ApplicationRecord
   has_many :mill_machine_belts, dependent: :destroy
   has_many :mill_machines, through: :mill_machine_belts
 
+  has_many :machine_belts, dependent: :destroy
+  has_many :machines, through: :machine_belts
+
 
   # Callbacks
   before_save { grade.upcase! }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_03_140206) do
+ActiveRecord::Schema.define(version: 2018_07_05_135309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,18 @@ ActiveRecord::Schema.define(version: 2018_07_03_140206) do
     t.string "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "machine_belts", force: :cascade do |t|
+    t.bigint "machine_id"
+    t.bigint "belt_id"
+    t.integer "length"
+    t.integer "width"
+    t.integer "quantity", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["belt_id"], name: "index_machine_belts_on_belt_id"
+    t.index ["machine_id"], name: "index_machine_belts_on_machine_id"
   end
 
   create_table "machines", force: :cascade do |t|
@@ -77,6 +89,8 @@ ActiveRecord::Schema.define(version: 2018_07_03_140206) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "machine_belts", "belts"
+  add_foreign_key "machine_belts", "machines"
   add_foreign_key "mill_machine_belts", "belts"
   add_foreign_key "mill_machine_belts", "mill_machines"
   add_foreign_key "mill_machines", "machines"

@@ -1,0 +1,37 @@
+<%= render partial: "shared/breadcrumbs", object: @breadcrumbs, as: 'items' %>
+
+<div class="row">
+	<div class="mb-4">
+		<%= link_to 'Add a new belt', new_machine_belt_path(@machine), class: 'btn btn-primary' %>
+	</div>
+</div>
+
+<div class="row">
+	<table class="table table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">Belt</th>
+				<th scope="col">Length <span class="font-weight-light">(in mm)</span></th>
+				<th scope="col">Width <span class="font-weight-light">(in mm)</span></th>
+				<th scope="col">Quantity</th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @machine_belts.each do |machine_belt| %>
+				<tr>
+					<td><%= machine_belt.belt.grade %></td>
+					<td><%= machine_belt.length %></td>
+					<td><%= machine_belt.width %></td>
+					<td><%= machine_belt.quantity %></td>
+					<td class="btn-group pt-2">
+						<%= link_to 'Show', machine_belt_path(@machine, machine_belt), class: 'btn btn-sm btn-outline-secondary' %>
+						<%= link_to 'Edit', edit_machine_belt_path(@machine, machine_belt), class: 'btn btn-sm btn-outline-secondary' %>
+						<%= link_to 'Destroy', machine_belt_path(@machine, machine_belt), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-secondary' %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

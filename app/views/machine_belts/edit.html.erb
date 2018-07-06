@@ -1,0 +1,17 @@
+<%= render partial: "shared/breadcrumbs", object: @breadcrumbs, as: 'items' %>
+
+<div class="row">
+	<div class="col-6 card">
+		<h2 class="mt-2">Editing Record</h2>
+		<hr/>
+
+		<%= render 'form', machine_belt: @machine_belt, url: machine_belt_path(@machine, @machine_belt) %>
+
+		<div class="btn-group">
+			<%= link_to 'Show', machine_belt_path(@machine, @machine_belt),
+				class: 'btn btn-block btn-outline-primary my-3' %>
+			<%= link_to 'Back to all records', machine_belts_path(@machine),
+				class: 'btn btn-block btn-outline-primary my-3' %>
+		</div>
+	</div>
+</div>

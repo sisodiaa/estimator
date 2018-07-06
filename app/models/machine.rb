@@ -6,6 +6,9 @@ class Machine < ApplicationRecord
   has_many :mill_machines, dependent: :destroy
   has_many :mills, through: :mill_machines
 
+  has_many :machine_belts, dependent: :destroy
+  has_many :belts, through: :machine_belts
+
 
   # Callbacks
   before_save :set_attributes_case

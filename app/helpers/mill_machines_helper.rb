@@ -10,8 +10,4 @@ module MillMachinesHelper
     end
     hash.to_a
   end
-
-  def mill_machine_form_path(record)
-    record.new_record? ? mill_machines_path : mill_machine_path
-  end
 end

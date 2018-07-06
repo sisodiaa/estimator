@@ -5,13 +5,7 @@
 		<h2 class="mt-2">Add Machine to Mill</h2>
 		<hr/>
 
-		<%= render partial: 'form',
-							 locals: {
-												 mill: @mill,
-												 mill_machine: @mill_machine,
-												 url: mill_machine_form_path(@mill_machine)
-		                   }
-		%>
+		<%= render 'form', mill_machine: @mill_machine, url: mill_machines_path(@mill) %>
 
 		<%= link_to 'Back to all records', mill_machines_path(@mill),
 			class: 'btn btn-outline-primary my-3' %>

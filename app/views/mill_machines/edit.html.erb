@@ -5,13 +5,7 @@
 		<h2 class="mt-2">Editing Record</h2>
 		<hr/>
 
-		<%= render partial: 'form',
-							 locals: {
-												 mill: @mill,
-												 mill_machine: @mill_machine,
-												 url: mill_machine_form_path(@mill_machine)
-											 }
-		%>
+		<%= render 'form', mill_machine: @mill_machine, url: mill_machine_path(@mill, @mill_machine) %>
 
 		<div class="btn-group">
 			<%= link_to 'Show', mill_machine_path(@mill, @mill_machine),

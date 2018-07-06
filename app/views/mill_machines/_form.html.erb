@@ -1,4 +1,4 @@
-<%= form_with(model: [mill, mill_machine], url: url, local: true) do |form| %>
+<%= form_with(model: mill_machine, url: url, local: true) do |form| %>
   <% if mill_machine.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(mill_machine.errors.count, "error") %> prohibited this machine from being added:</h2>

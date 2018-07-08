@@ -1,8 +1,10 @@
 class QueryResult
-  attr_reader :response
+  attr_reader :query_type, :metadata, :results
 
-  def initialize(response)
-    @response = response
+  def initialize(query_type, metadata, results)
+    @query_type = query_type
+    @metadata = metadata
+    @results = results
   end
 
   def call
@@ -13,51 +15,23 @@ class QueryResult
 
   def query_result
     case query_type
-    when "maker", "model"
+    when "machine_mill"
       mills_list_with_machine_count
-    when "grade"
-      mills_list_with_belt_count
-    when "recommend"
-      list_of_belt_grades
     end
-  end
-
-  def query_type
-    response.first
   end
 
   def mills_list_with_machine_count
-    mills_list = response.last.map do |row|
-      Struct.new(:mill, :quantity).new(row.first, row.last)
-    end
-
     Struct.new(:template, :metadata, :result)
       .new(template, metadata, mills_list)
-  end
-
-  def mills_list_with_belt_count
-    mills_list = response.last.map do |row|
-      Struct.new(:mill, :quantity).new(row.first, row.last)
-    end
-
-    Struct.new(:template, :metadata, :result)
-      .new(template, metadata, mills_list)
-  end
-
-  def list_of_belt_grades
-    belt_grades_list = response.last.map do |row|
-      Struct.new(:belt).new(row)
-    end
-
-    Struct.new(:template, :metadata, :result)
-      .new(template, metadata, belt_grades_list)
   end
 
   def template
     "type_#{query_type}"
   end
-  
-  def metadata
-    response[1]
+
+  def mills_list
+    results.map do |mill, quantity = result|
+      Struct.new(:mill, :quantity).new(mill, quantity)
+    end
   end
 end

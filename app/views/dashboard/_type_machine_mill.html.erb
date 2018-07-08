@@ -1,0 +1,19 @@
+<div class="row">
+	<%= render 'search_parameters', metadata: metadata %>
+</div>
+<div class="row">
+	<table class="table table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">Mill Code</th>
+				<th scope="col">Mill Name</th>
+				<th scope="col">Quantity</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<%= render partial: 'type_machine_mill_result', collection: results, as: 'result' %>
+		</tbody>
+	</table>
+</div>
+

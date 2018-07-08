@@ -33,4 +33,11 @@ class Mill < ApplicationRecord
     location.downcase!
     code.downcase!
   end
+
+
+  # Activerecord methods
+  def self.having_machine_with_attributes(machine_attributes)
+    return includes(:machines) if machine_attributes.empty?
+    includes(:machines).where(machines: machine_attributes)
+  end
 end

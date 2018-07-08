@@ -17,6 +17,10 @@ Rails.application.routes.draw do
 
   get '/search', to: 'dashboard#show', as: 'search'
 
+  namespace :api do
+    get '/query', to: 'queries#show'
+  end
+
   authenticated :user do
     root to: 'dashboard#index', as: :authenticated_root
   end

@@ -1,74 +1,42 @@
 <div class="row mb-4">
-	<div class="col-9">
+	<div>
 		<div class="card-deck">
 			<div class="card">
-				<h5 class="card-header">Search by Machine's Maker</h5>
+				<h5 class="card-header">Search for Mills by Machine Attributes</h5>
 				<div class="card-body">
 					<%= form_with url: search_path, method: :get, local: true do |form| %>
-						<%= form.hidden_field :type, value: 'maker' %>
+						<%= form.hidden_field :type, value: 'machine_mill' %>
+						<div class="form-group">
+							<%= form.label :section %>
+
+							<%= form.select :section,
+									options_for_select(section_dropdown_values),
+									{ include_blank: true },
+									class: 'form-control' %>
+						</div>
+
 						<div class="form-group">
 							<%= form.label :maker %>
-							<%= form.select :maker, options_for_select(Machine.distinct.pluck(:make)), {}, class: 'form-control' %>
+
+							<%= form.select :maker,
+									[],
+									{ include_blank: true },
+									disabled: true,
+									class: 'form-control' %>
 						</div>
 
-						<div class="actions">
-							<%= form.submit 'Search', class: 'btn btn-primary' %>
-						</div>
-					<% end %>
-				</div>
-			</div>
-
-			<div class="card">
-				<h5 class="card-header">Search by Machine's Model</h5>
-				<div class="card-body">
-					<%= form_with url: search_path, method: :get, local: true do |form| %>
-						<%= form.hidden_field :type, value: 'model' %>
 						<div class="form-group">
-							<%= form.label :model, 'Model' %>
-							<%= form.select :model, grouped_options_for_select(machines_list), {}, class: 'form-control' %>
+							<%= form.label :model %>
+
+							<%= form.select :model,
+								  [],
+									{ include_blank: true },
+									disabled: true,
+									class: 'form-control' %>
 						</div>
 
 						<div class="actions">
-							<%= form.submit 'Search', class: 'btn btn-primary' %>
-						</div>
-					<% end %>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="row mb-4">
-	<div class="col-9">
-		<div class="card-deck">
-			<div class="card">
-				<h5 class="card-header">Search by Belt's Grade</h5>
-				<div class="card-body">
-					<%= form_with url: search_path, method: :get, local: true do |form| %>
-						<%= form.hidden_field :type, value: 'grade' %>
-						<div class="form-group">
-							<%= form.label :grade %>
-							<%= form.select :grade, options_for_select(Belt.pluck(:grade, :id)), {}, class: 'form-control' %>
-						</div>
-
-						<div class="actions">
-							<%= form.submit 'Search', class: 'btn btn-primary' %>
-						</div>
-					<% end %>
-				</div>
-			</div>
-
-			<div class="card">
-				<h5 class="card-header">Belt recommendation for Mill</h5>
-				<div class="card-body">
-					<%= form_with url: search_path, method: :get, local: true do |form| %>
-						<%= form.hidden_field :type, value: 'recommend' %>
-						<div class="form-group">
-							<%= form.label :mill %>
-							<%= form.select :mill, options_for_select(Mill.pluck(:name, :code)), {}, class: 'form-control' %>
-						</div>
-
-						<div class="actions">
-							<%= form.submit 'Search', class: 'btn btn-primary' %>
+							<%= form.submit 'Search', class: 'btn btn-primary', id: 'search_1', disabled: true %>
 						</div>
 					<% end %>
 				</div>

@@ -15,7 +15,7 @@ class Belt < ApplicationRecord
 
   
   # Validations
-  validates :grade, presence: true
+  validates :grade, presence: true, uniqueness: true
 
 
   # Scopes

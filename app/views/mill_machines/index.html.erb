@@ -10,7 +10,9 @@
 	<table class="table table-striped">
 		<thead class="thead-dark">
 			<tr>
-				<th scope="col">Machine</th>
+				<th scope="col">Section</th>
+				<th scope="col">Maker</th>
+				<th scope="col">Model</th>
 				<th scope="col">Units</th>
 				<th scope="col"></th>
 			</tr>
@@ -19,7 +21,9 @@
 		<tbody>
 			<% @mill_machines.each do |mill_machine| %>
 				<tr>
-					<td><%= mill_machine.machine.machine_name %></td>
+					<td><%= mill_machine.machine.section.titleize %></td>
+					<td><%= mill_machine.machine.make.titleize %></td>
+					<td><%= mill_machine.machine.model %></td>
 					<td><%= mill_machine.quantity %></td>
 					<td class="btn-group pt-2">
 						<%= link_to 'Show', mill_machine_path(@mill, mill_machine), class: 'btn btn-sm btn-outline-secondary' %>

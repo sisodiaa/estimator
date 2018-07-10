@@ -3,8 +3,16 @@
 <div class="row">
 	<table class="table table-bordered w-50">
 		<tr>
-			<th>Machine</th>
-			<td><%= @mill_machine.machine.machine_name %></td>
+			<th>Section</th>
+			<td><%= @mill_machine.machine.section.titleize %></td>
+		</tr>
+		<tr>
+			<th>Maker</th>
+			<td><%= @mill_machine.machine.make.titleize %></td>
+		</tr>
+		<tr>
+			<th>Model</th>
+			<td><%= @mill_machine.machine.model %></td>
 		</tr>
 		<tr>
 			<th>Quantity</th>
@@ -18,5 +26,4 @@
 		<%= link_to 'Edit record', edit_mill_machine_path(@mill, @mill_machine), class: 'btn btn-outline-primary mt-3' %>
 		<%= link_to 'Back to all records', mill_machines_path(@mill), class: 'btn btn-outline-primary mt-3' %>
 	</div>
-	<%= link_to 'Belts in Machine', mill_machine_belts_path(@mill, @mill_machine), class: 'btn btn-outline-primary mt-3' %>
 </div>

@@ -66,7 +66,7 @@ class QueryRunner
     mills.map do |mill|
       [
         mill,
-        MillMachine.count_of_machines_with_attributes(mill, machine_attributes)
+        MillMachine.machines_with_attributes(mill, machine_attributes)
       ]
     end
   end

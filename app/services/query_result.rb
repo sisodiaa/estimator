@@ -30,8 +30,10 @@ class QueryResult
   end
 
   def mills_list
-    results.map do |mill, quantity = result|
-      Struct.new(:mill, :quantity).new(mill, quantity)
+    results.map do |mill, mill_machines|
+      Struct
+        .new(:mill, :sum, :mill_machines)
+        .new(mill, mill_machines.sum(:quantity), mill_machines)
     end
   end
 end

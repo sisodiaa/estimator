@@ -20,11 +20,12 @@ class MillMachine < ApplicationRecord
     ).sum(:quantity)
   }
 
-  scope :count_of_machines_with_attributes, lambda{ |mill, machine_attributes|
-    where(
-      mill: mill,
-      machine: Machine.where(machine_attributes)
-    ).sum(:quantity)
+  scope :machines_with_attributes, lambda{ |mill, machine_attributes|
+    includes(:mill, :machine)
+      .where(
+        mill: mill,
+        machine: Machine.where(machine_attributes)
+      )
   }
   
   scope :mills_with_machine_model, lambda { |model_id|

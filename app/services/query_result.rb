@@ -14,15 +14,21 @@ class QueryResult
   private
 
   def query_result
-    case query_type
-    when "machine_mill"
-      mills_list_with_machine_count
-    end
+    list_with_count
   end
 
-  def mills_list_with_machine_count
+  def list_with_count
     Struct.new(:template, :metadata, :result)
-      .new(template, metadata, mills_list)
+      .new(template, metadata, results_list)
+  end
+
+  def results_list
+    case query_type
+    when "machine_mill"
+      mills_list
+    when "belt_machine"
+      machines_list
+    end
   end
 
   def template
@@ -34,6 +40,14 @@ class QueryResult
       Struct
         .new(:mill, :sum, :mill_machines)
         .new(mill, mill_machines.sum(:quantity), mill_machines)
+    end
+  end
+
+  def machines_list
+    results.map do |machine, machine_belts|
+      Struct
+        .new(:machine, :sum, :machine_belts)
+        .new(machine, machine_belts.sum(:quantity), machine_belts)
     end
   end
 end

@@ -2,6 +2,7 @@ document.addEventListener("turbolinks:load", function() {
   var sectionDropdown = document.getElementById('section');
   var makerDropdown = document.getElementById('maker');
   var modelDropdown = document.getElementById('model');
+  var gradeDropdown = document.getElementById('grade');
 
   if (sectionDropdown) {
     sectionDropdown.selectedIndex = "0";
@@ -23,6 +24,16 @@ document.addEventListener("turbolinks:load", function() {
       var button = document.getElementById('search_1');
       button.setAttribute('disabled', true)
       if (modelDropdown.value) {
+        button.removeAttribute('disabled');
+      }
+    });
+  }
+
+  if (gradeDropdown) {
+    gradeDropdown.addEventListener('change', function() {
+      var button = document.getElementById('search_2');
+      button.setAttribute('disabled', true)
+      if (gradeDropdown.value) {
         button.removeAttribute('disabled');
       }
     });

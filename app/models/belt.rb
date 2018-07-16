@@ -27,4 +27,11 @@ class Belt < ApplicationRecord
     includes(:mill_machines)
       .where(mill_machines: { mill_id: mill, machine_id: machines })
   }
+
+
+  # Activerecord methods
+  def self.with_belt_machine_attributes(belt_machine_attributes)
+    return all if belt_machine_attributes.empty?
+    where(belt_machine_attributes)
+  end
 end

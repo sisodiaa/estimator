@@ -1,11 +1,13 @@
 <div class="row mb-4">
-	<div>
+	<div class="col-8">
 		<div class="card-deck">
+			<!-- Search for Mills by Machine Attributes -->
 			<div class="card">
 				<h5 class="card-header">Search for Mills by Machine Attributes</h5>
 				<div class="card-body">
 					<%= form_with url: search_path, method: :get, local: true do |form| %>
 						<%= form.hidden_field :type, value: 'machine_mill' %>
+
 						<div class="form-group">
 							<%= form.label :section %>
 
@@ -41,6 +43,55 @@
 					<% end %>
 				</div>
 			</div>
+			<!-- end -->
+
+			<!-- Search for Machine by Belt Attributes -->
+			<div class="card">
+				<h5 class="card-header">Search for Machines by Belt Attributes</h5>
+				<div class="card-body">
+					<%= form_with url: search_path, method: :get, local: true do |form| %>
+						<%= form.hidden_field :type, value: 'belt_machine' %>
+
+						<div class="form-group">
+							<%= form.label :grade %>
+
+							<%= form.select :grade,
+									options_for_select(grade_dropdown_values),
+									{ include_blank: true },
+									class: 'form-control' %>
+						</div>
+
+						<div class="form-group">
+							<%= form.label :length %>
+							<div class="row">
+								<div class="col">
+									<%= form.number_field :length_min, placeholder: 'minimun', class: 'form-control' %>
+								</div>
+								<div class="col">
+									<%= form.number_field :length_max, placeholder: 'maximum', class: 'form-control' %>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<%= form.label :width %>
+							<div class="row">
+								<div class="col">
+									<%= form.number_field :width_min, placeholder: 'minimun', class: 'form-control' %>
+								</div>
+								<div class="col">
+									<%= form.number_field :width_max, placeholder: 'maximum', class: 'form-control' %>
+								</div>
+							</div>
+						</div>
+
+						<div class="actions">
+							<%= form.submit 'Search', class: 'btn btn-primary', id: 'search_2', disabled: true %>
+						</div>
+					<% end %>
+				</div>
+			</div>
+			<!-- end -->
 		</div>
 	</div>
 </div>

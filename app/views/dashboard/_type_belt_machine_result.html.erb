@@ -1,0 +1,14 @@
+<tr>
+	<%= render partial: 'type_belt_machine_result_first',
+		locals: {
+		rowspan: result.machine_belts.size,
+		machine: result.machine,
+		machine_belt: result.machine_belts.first,
+		sum: result.sum
+	}
+%>
+</tr>
+<%= render partial: 'type_belt_machine_result_reaminder',
+	collection: result.machine_belts[1..-1],
+	as: 'machine_belt'
+%>

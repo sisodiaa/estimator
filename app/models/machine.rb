@@ -31,4 +31,11 @@ class Machine < ApplicationRecord
     section.downcase!
     sub_section.downcase!
   end
+
+
+  # Activerecord methods
+  def self.having_belts_with_attributes(belt_machine_attributes)
+    return includes(:belts, :machine_belts) if belt_machine_attributes.empty?
+    includes(:belts, :machine_belts).where(belt_machine_attributes)
+  end
 end

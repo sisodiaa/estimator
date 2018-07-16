@@ -30,6 +30,7 @@ document.addEventListener("turbolinks:load", function() {
   }
 
   if (gradeDropdown) {
+    gradeDropdown.selectedIndex = "0";
     gradeDropdown.addEventListener('change', function() {
       var button = document.getElementById('search_2');
       button.setAttribute('disabled', true)

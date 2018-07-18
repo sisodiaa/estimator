@@ -5,8 +5,15 @@ class DashboardController < ApplicationController
   end
 
   def show
-    query_type, metadata, results = QueryRunner.new(request.query_parameters).call
-    @result = QueryResult.new(query_type, metadata, results).call
+    query_type, results = QueryRunner.new.call query_parameters
+
+    @result = ResultFormatter.new.call(query_type, results)
     @breadcrumbs = [['Home', root_path], 'Results']
+  end
+
+  private
+
+  def query_parameters
+    request.query_parameters
   end
 end

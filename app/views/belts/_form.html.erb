@@ -13,7 +13,27 @@
 
   <div class="form-group">
     <%= form.label :grade %>
-    <%= form.text_field :grade, class: 'form-control' %>
+    <%= form.text_field :grade, class: 'form-control', disabled: belt.new_record? ? false : true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :rate %>
+    <%= form.number_field :rate, class: 'form-control', step: 0.01 %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :minor_join_charge, "Minor Joining Charges" %>
+    <%= form.number_field :minor_join_charge, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :major_join_charge, "Major Joining Charges" %>
+    <%= form.number_field :major_join_charge, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :rounding_off, "Rounding Off Factor" %>
+    <%= form.number_field :rounding_off, class: 'form-control' %>
   </div>
 
   <div class="actions">

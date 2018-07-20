@@ -75,6 +75,6 @@ class BeltsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def belt_params
-      params.require(:belt).permit(:grade)
+      params.require(:belt).permit(:grade, :rate, :minor_join_charge, :major_join_charge, :rounding_off)
     end
 end

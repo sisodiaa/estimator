@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_10_113615) do
+ActiveRecord::Schema.define(version: 2018_07_19_164029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,10 @@ ActiveRecord::Schema.define(version: 2018_07_10_113615) do
     t.string "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "rate", precision: 8, scale: 2
+    t.integer "minor_join_charge"
+    t.integer "major_join_charge"
+    t.integer "rounding_off"
     t.index ["grade"], name: "index_belts_on_grade", unique: true
   end
 

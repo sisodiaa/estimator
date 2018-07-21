@@ -2,6 +2,10 @@ class Belt < ApplicationRecord
   include WhitespaceStripper
 
 
+  # Callbacks
+  after_save :update_machine_belts_price
+
+
   # Associations
   has_many :mill_machine_belts, dependent: :destroy
   has_many :mill_machines, through: :mill_machine_belts
@@ -13,7 +17,7 @@ class Belt < ApplicationRecord
   # Callbacks
   before_save { grade.upcase! }
 
-  
+
   # Validations
   validates :grade, presence: true, uniqueness: true
   validates :rate, presence: true, numericality: { greater_than: 0 }
@@ -33,9 +37,17 @@ class Belt < ApplicationRecord
   }
 
 
-  # Activerecord methods
+  # Methods
+
+  # Activerecord Methods
   def self.with_belt_machine_attributes(belt_machine_attributes)
     return all if belt_machine_attributes.empty?
     where(belt_machine_attributes)
+  end
+
+
+  # Callback Methods
+  def update_machine_belts_price
+    machine_belts.each(&:update_price)
   end
 end

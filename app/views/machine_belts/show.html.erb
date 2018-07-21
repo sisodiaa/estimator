@@ -18,6 +18,10 @@
 			<th>Quantity</th>
 			<td><%= @machine_belt.quantity %></td>
 		</tr>
+		<tr>
+			<th>Price</th>
+			<td><%= number_with_precision(@machine_belt.price, precision: 2) %></td>
+		</tr>
 	</table>
 </div>
 

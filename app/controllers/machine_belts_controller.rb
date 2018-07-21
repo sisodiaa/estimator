@@ -7,7 +7,7 @@ class MachineBeltsController < ApplicationController
   # GET /machine_belts
   # GET /machine_belts.json
   def index
-    @machine_belts = @machine.machine_belts.all
+    @machine_belts = @machine.machine_belts.all.order(id: :asc)
   end
 
   # GET /machine_belts/1

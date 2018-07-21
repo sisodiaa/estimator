@@ -7,7 +7,7 @@ class MillMachinesController < ApplicationController
   # GET /mill_machines
   # GET /mill_machines.json
   def index
-    @mill_machines = @mill.mill_machines.all
+    @mill_machines = @mill.mill_machines.all.order(id: :asc)
   end
 
   # GET /mill_machines/1

@@ -6,7 +6,7 @@ class MillsController < ApplicationController
   # GET /mills
   # GET /mills.json
   def index
-    @mills = Mill.all
+    @mills = Mill.all.order(id: :asc)
   end
 
   # GET /mills/1

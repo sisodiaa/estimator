@@ -6,7 +6,7 @@ class BeltsController < ApplicationController
   # GET /belts
   # GET /belts.json
   def index
-    @belts = Belt.all
+    @belts = Belt.all.order(id: :asc)
   end
 
   # GET /belts/1

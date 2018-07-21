@@ -12,7 +12,7 @@ class Machine < ApplicationRecord
 
   # Callbacks
   before_save :set_attributes_case
-  
+
 
   # Validations
   validates :make, presence: true
@@ -20,7 +20,7 @@ class Machine < ApplicationRecord
   validates :section, presence: true
 
 
-  # methods
+  # Methods
   def machine_name
     "#{make.titleize} #{model}"
   end
@@ -30,6 +30,18 @@ class Machine < ApplicationRecord
     model.upcase!
     section.downcase!
     sub_section.downcase!
+  end
+
+  def update_potential
+    self.potential = calculate_potential
+    save
+  end
+
+  def calculate_potential
+    mb ||= machine_belts
+    mb.group(:length, :width, :quantity).count(:id).keys.map do |length, width, quantity|
+      mb.where(length: length, width: width, quantity: quantity).order("price DESC").first.price
+    end.sum
   end
 
 

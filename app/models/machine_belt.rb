@@ -5,6 +5,7 @@ class MachineBelt < ApplicationRecord
 
   # Callbacks
   before_save :set_price
+  after_save :update_machine_potential
 
 
   # Validations
@@ -50,5 +51,11 @@ class MachineBelt < ApplicationRecord
 
   def adjusted_width
     width % 10 == 0 ? width : (width / 10) * 10 + belt.rounding_off * 5
+  end
+
+
+  # Callback Methods
+  def update_machine_potential
+    machine.update_potential
   end
 end

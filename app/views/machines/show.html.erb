@@ -18,6 +18,10 @@
 			<th>Sub Section</th>
 			<td><%= @machine.sub_section.titleize %></td>
 		</tr>
+		<tr>
+			<th>Potential</th>
+			<td><%= number_with_precision(@machine.potential, precision: 2) %></td>
+		</tr>
 	</table>
 </div>
 

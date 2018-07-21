@@ -7,6 +7,12 @@
 </div>
 
 <div class="row">
+	<p>
+	<strong>Potential for <%= @machine.machine_name %></strong>: <%= number_with_precision(@machine.potential, precision: 2) %>
+	</p>
+</div>
+
+<div class="row">
 	<table class="table table-striped">
 		<thead class="thead-dark">
 			<tr>

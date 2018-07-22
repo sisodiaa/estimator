@@ -1,6 +1,8 @@
 class Machine < ApplicationRecord
   include WhitespaceStripper
 
+  attr_accessor :form_attributes
+
 
   # Associations
   has_many :mill_machines, dependent: :destroy
@@ -11,7 +13,7 @@ class Machine < ApplicationRecord
 
 
   # Callbacks
-  before_save :set_attributes_case
+  before_save :set_attributes_case, if: :updating_via_form?
 
 
   # Validations
@@ -42,6 +44,10 @@ class Machine < ApplicationRecord
     mb.group(:length, :width, :quantity).count(:id).keys.map do |length, width, quantity|
       mb.where(length: length, width: width, quantity: quantity).order("price DESC").first.price
     end.sum
+  end
+
+  def via_form?
+    !!via_form
   end
 
 

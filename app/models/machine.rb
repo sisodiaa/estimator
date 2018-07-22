@@ -1,7 +1,7 @@
 class Machine < ApplicationRecord
   include WhitespaceStripper
 
-  attr_accessor :form_attributes
+  attr_accessor :via_form
 
 
   # Associations
@@ -13,7 +13,7 @@ class Machine < ApplicationRecord
 
 
   # Callbacks
-  before_save :set_attributes_case, if: :updating_via_form?
+  before_save :set_attributes_case, if: :via_form?
 
 
   # Validations

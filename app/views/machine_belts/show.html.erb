@@ -20,7 +20,7 @@
 		</tr>
 		<tr>
 			<th>Price</th>
-			<td><%= number_with_precision(@machine_belt.price, precision: 2) %></td>
+			<td><%= rupee_format(@machine_belt.price) %></td>
 		</tr>
 	</table>
 </div>

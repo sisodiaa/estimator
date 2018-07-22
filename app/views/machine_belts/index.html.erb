@@ -8,7 +8,7 @@
 
 <div class="row">
 	<p>
-	<strong>Potential for <%= @machine.machine_name %></strong>: <%= "\u20B9 #{number_with_precision(@machine.potential, precision: 2)}" %>
+	<strong>Potential for <%= @machine.machine_name %></strong>: <%= rupee_format(@machine.potential) %>
 	</p>
 </div>
 
@@ -32,7 +32,7 @@
 					<td><%= machine_belt.length %></td>
 					<td><%= machine_belt.width %></td>
 					<td><%= machine_belt.quantity %></td>
-					<td><%= "\u20B9 #{number_with_precision(machine_belt.price, precision: 2)}" %></td>
+					<td><%= rupee_format(machine_belt.price) %></td>
 					<td class="btn-group pt-2">
 						<%= link_to 'Show', machine_belt_path(@machine, machine_belt), class: 'btn btn-sm btn-outline-secondary' %>
 						<%= link_to 'Edit', edit_machine_belt_path(@machine, machine_belt), class: 'btn btn-sm btn-outline-secondary' %>

@@ -20,7 +20,7 @@
 		</tr>
 		<tr>
 			<th>Potential</th>
-			<td><%= "\u20B9 #{number_with_precision(@machine.potential, precision: 2)}" %></td>
+			<td><%= rupee_format(@machine.potential) %></td>
 		</tr>
 	</table>
 </div>

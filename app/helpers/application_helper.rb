@@ -15,4 +15,8 @@ module ApplicationHelper
     end
     nil
   end
+
+  def rupee_format(price)
+    "\u20B9 #{number_with_precision(price, precision: 2)}"
+  end
 end

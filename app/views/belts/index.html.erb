@@ -22,7 +22,7 @@
 			<% @belts.each do |belt| %>
 				<tr>
 					<td><%= belt.grade %></td>
-					<td><%= belt.rate %></td>
+					<td><%= rupee_format(belt.rate) %></td>
 					<td><%= belt.minor_join_charge %></td>
 					<td><%= belt.major_join_charge %></td>
 					<td><%= belt.rounding_off %></td>

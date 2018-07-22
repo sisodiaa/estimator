@@ -26,7 +26,7 @@
 					<td><%= machine.model %></td>
 					<td><%= machine.section.titleize %></td>
 					<td><%= machine.sub_section.titleize %></td>
-					<td><%= "\u20B9 #{number_with_precision(machine.potential, precision: 2)}" %></td>
+					<td><%= rupee_format(machine.potential) %></td>
 					<td class="pt-2"><%= link_to 'Belts in machine', machine_belts_path(machine), class: 'btn btn-sm btn-outline-secondary' %></td>
 					<td class="btn-group pt-2">
 						<%= link_to 'Show', machine, class: 'btn btn-sm btn-outline-secondary' %>

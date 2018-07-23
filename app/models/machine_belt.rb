@@ -7,6 +7,7 @@ class MachineBelt < ApplicationRecord
   # Callbacks
   before_save :set_price
   after_save :update_machine_potential
+  after_destroy :update_machine_potential
 
 
   # Validations
@@ -38,8 +39,14 @@ class MachineBelt < ApplicationRecord
     save
   end
 
+
+  # Callback Methods and their associated methods
   def set_price
     self.price = calculate_price
+  end
+
+  def update_machine_potential
+    machine.update_potential if update_machine_potential?
   end
 
   def calculate_price
@@ -54,9 +61,11 @@ class MachineBelt < ApplicationRecord
     width % 10 == 0 ? width : (width / 10) * 10 + belt.rounding_off * 5
   end
 
+  def update_machine_potential?
+    destroyed_by_association.nil? || not_destroyed_by_machine?
+  end
 
-  # Callback Methods
-  def update_machine_potential
-    machine.update_potential
+  def not_destroyed_by_machine?
+    destroyed_by_association.foreign_key != "machine_id"
   end
 end

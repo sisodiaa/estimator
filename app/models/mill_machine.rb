@@ -11,6 +11,7 @@ class MillMachine < ApplicationRecord
   # Callbacks
   before_save :set_potential
   after_save :update_mill_potential
+  after_destroy :update_mill_potential
 
 
   # Validations
@@ -46,6 +47,8 @@ class MillMachine < ApplicationRecord
     save
   end
 
+
+  # Callback Methods and their associated methods
   def set_potential
     self.potential = calculate_potential
   end
@@ -55,6 +58,14 @@ class MillMachine < ApplicationRecord
   end
 
   def update_mill_potential
-    mill.update_potential
+    mill.update_potential if update_mill_potential?
+  end
+
+  def update_mill_potential?
+    destroyed_by_association.nil? || not_destroyed_by_mill?
+  end
+
+  def not_destroyed_by_mill?
+    destroyed_by_association.foreign_key != "mill_id"
   end
 end

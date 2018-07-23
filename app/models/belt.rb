@@ -2,10 +2,6 @@ class Belt < ApplicationRecord
   include WhitespaceStripper
 
 
-  # Callbacks
-  after_save :update_machine_belts_price
-
-
   # Associations
   has_many :mill_machine_belts, dependent: :destroy
   has_many :mill_machines, through: :mill_machine_belts
@@ -16,6 +12,7 @@ class Belt < ApplicationRecord
 
   # Callbacks
   before_save { grade.upcase! }
+  after_save :update_machine_belts_price
 
 
   # Validations

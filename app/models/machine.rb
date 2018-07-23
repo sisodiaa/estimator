@@ -43,7 +43,7 @@ class Machine < ApplicationRecord
   def calculate_potential
     mb ||= machine_belts
     mb.group(:length, :width, :quantity).count(:id).keys.map do |length, width, quantity|
-      mb.where(length: length, width: width, quantity: quantity).order("price DESC").first.price
+      mb.where(length: length, width: width, quantity: quantity).maximum(:price)
     end.sum
   end
 

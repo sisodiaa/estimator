@@ -14,6 +14,7 @@
 				<th scope="col">Maker</th>
 				<th scope="col">Model</th>
 				<th scope="col">Units</th>
+				<th scope="col">Potential</th>
 				<th scope="col"></th>
 			</tr>
 		</thead>
@@ -25,6 +26,7 @@
 					<td><%= mill_machine.machine.make.titleize %></td>
 					<td><%= mill_machine.machine.model %></td>
 					<td><%= mill_machine.quantity %></td>
+					<td><%= rupee_format(mill_machine.potential) %></td>
 					<td class="btn-group pt-2">
 						<%= link_to 'Show', mill_machine_path(@mill, mill_machine), class: 'btn btn-sm btn-outline-secondary' %>
 						<%= link_to 'Edit', edit_mill_machine_path(@mill, mill_machine), class: 'btn btn-sm btn-outline-secondary' %>

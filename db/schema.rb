@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_21_155824) do
+ActiveRecord::Schema.define(version: 2018_07_22_175052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2018_07_21_155824) do
     t.integer "quantity", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "potential", default: "0.0"
     t.index ["machine_id"], name: "index_mill_machines_on_machine_id"
     t.index ["mill_id", "machine_id"], name: "index_mill_machines_on_mill_id_and_machine_id", unique: true
     t.index ["mill_id"], name: "index_mill_machines_on_mill_id"

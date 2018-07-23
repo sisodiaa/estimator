@@ -3,6 +3,7 @@ class MachineBelt < ApplicationRecord
   belongs_to :machine
   belongs_to :belt
 
+
   # Callbacks
   before_save :set_price
   after_save :update_machine_potential

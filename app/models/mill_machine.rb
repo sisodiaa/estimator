@@ -1,9 +1,15 @@
 class MillMachine < ApplicationRecord
   # Associations
   belongs_to :mill
+
   belongs_to :machine
+
   has_many :mill_machine_belts, dependent: :destroy
   has_many :belts, through: :mill_machine_belts
+
+
+  # Callbacks
+  before_save :set_potential
 
 
   # Validations
@@ -31,4 +37,19 @@ class MillMachine < ApplicationRecord
   scope :mills_with_machine_model, lambda { |model_id|
     where(machine: Machine.where(id: model_id))
   }
+
+
+  # Methods
+  def update_potential
+    # Save trigger callbacks, which in turn call set_price method
+    save
+  end
+
+  def set_potential
+    self.potential = calculate_potential
+  end
+
+  def calculate_potential
+    machine.potential * quantity
+  end
 end

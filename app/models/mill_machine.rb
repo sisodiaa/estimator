@@ -10,6 +10,7 @@ class MillMachine < ApplicationRecord
 
   # Callbacks
   before_save :set_potential
+  after_save :update_mill_potential
 
 
   # Validations
@@ -51,5 +52,9 @@ class MillMachine < ApplicationRecord
 
   def calculate_potential
     machine.potential * quantity
+  end
+
+  def update_mill_potential
+    mill.update_potential
   end
 end

@@ -1,6 +1,8 @@
 class Mill < ApplicationRecord
   include WhitespaceStripper
 
+  attr_accessor :via_form
+
 
   # Associations
   has_many :mill_machines, dependent: :destroy
@@ -8,7 +10,7 @@ class Mill < ApplicationRecord
 
 
   # Callbacks
-  before_save :set_attributes_case
+  before_save :set_attributes_case, if: :via_form?
 
 
   # Validations
@@ -32,6 +34,19 @@ class Mill < ApplicationRecord
     name.downcase!
     location.downcase!
     code.downcase!
+  end
+
+  def update_potential
+    self.potential = calculate_potential
+    save
+  end
+
+  def calculate_potential
+    mill_machines.sum(:potential)
+  end
+
+  def via_form?
+    !!via_form
   end
 
 

@@ -83,7 +83,7 @@ class MachineBeltsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def machine_belt_params
       params.require(:machine_belt)
-        .permit(:belt_id, :length, :width, :quantity, :priority)
+        .permit(:belt_id, :length, :width, :quantity, :priority, :life)
     end
 
     def set_breadcrumbs

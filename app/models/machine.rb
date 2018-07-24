@@ -41,10 +41,7 @@ class Machine < ApplicationRecord
   end
 
   def calculate_potential
-    mb ||= machine_belts
-    mb.group(:length, :width, :quantity).count(:id).keys.map do |length, width, quantity|
-      mb.where(length: length, width: width, quantity: quantity).maximum(:price)
-    end.sum
+    machine_belts.where(priority: 1).sum(:price)
   end
 
   def via_form?

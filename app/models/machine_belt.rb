@@ -56,7 +56,7 @@ class MachineBelt < ApplicationRecord
   end
 
   def calculate_price
-    belt.rate * (adjusted_length / 1000.0) * (adjusted_width / 10.0) * quantity
+    belt.rate * (adjusted_length / 1000.0) * (adjusted_width / 10.0) * quantity * life_factor
   end
 
   def adjusted_length
@@ -65,6 +65,10 @@ class MachineBelt < ApplicationRecord
 
   def adjusted_width
     width % 10 == 0 ? width : (width / 10) * 10 + belt.rounding_off * 5
+  end
+
+  def life_factor
+    12.0 / life
   end
 
   def update_machine_potential?

@@ -22,6 +22,9 @@ class MachineBelt < ApplicationRecord
   validates :quantity, presence: true,
     numericality: { only_integer: true, greater_than: 0 }
 
+  validates :priority, presence: true,
+    numericality: { only_integer: true, greater_than: 0 }
+
 
   # Scopes
   scope :belts_with_attributes, lambda{ |machine, belt_machine_attributes|

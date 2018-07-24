@@ -20,6 +20,7 @@
 				<th scope="col">Length <span class="font-weight-light">(in mm)</span></th>
 				<th scope="col">Width <span class="font-weight-light">(in mm)</span></th>
 				<th scope="col">Quantity</th>
+				<th scope="col">Priority</th>
 				<th scope="col">Price</th>
 				<th scope="col"></th>
 			</tr>
@@ -32,6 +33,7 @@
 					<td><%= machine_belt.length %></td>
 					<td><%= machine_belt.width %></td>
 					<td><%= machine_belt.quantity %></td>
+					<td><%= machine_belt.priority %></td>
 					<td><%= rupee_format(machine_belt.price) %></td>
 					<td class="btn-group pt-2">
 						<%= link_to 'Show', machine_belt_path(@machine, machine_belt), class: 'btn btn-sm btn-outline-secondary' %>

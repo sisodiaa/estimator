@@ -12,6 +12,7 @@
 				<th scope="col">Mill Code</th>
 				<th scope="col">Name</th>
 				<th scope="col">Location</th>
+				<th scope="col">Total Spindles</th>
 				<th scope="col">Potential</th>
 				<th scope="col" colspan="2"></th>
 			</tr>
@@ -23,6 +24,7 @@
 					<th scope="row"><%= mill.code %></th>
 					<td><%= mill.name.titleize %></td>
 					<td><%= mill.location.titleize %></td>
+					<td><%= mill.total_spindles %></td>
 					<td><%= rupee_format(mill.potential) %></td>
 					<td class="pt-2"><%= link_to 'Machines in mill', mill_machines_path(mill), class: 'btn btn-sm btn-outline-secondary' %></td>
 					<td class="btn-group pt-2">

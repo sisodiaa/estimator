@@ -19,6 +19,14 @@
 			<td><%= @mill_machine.quantity %></td>
 		</tr>
 		<tr>
+			<th>Spindles <span class="font-weight-light">(per machine)</span></th>
+			<td><%= @mill_machine.spindles %></td>
+		</tr>
+		<tr>
+			<th>Spindles Count</th>
+			<td><%= @mill_machine.spindles_count %></td>
+		</tr>
+		<tr>
 			<th>Potential</th>
 			<td><%= rupee_format(@mill_machine.potential) %></td>
 		</tr>

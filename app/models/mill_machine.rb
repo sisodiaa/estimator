@@ -47,6 +47,10 @@ class MillMachine < ApplicationRecord
     save
   end
 
+  def spindles_count
+    quantity * spindles
+  end
+
 
   # Callback Methods and their associated methods
   def set_potential

@@ -76,7 +76,7 @@ class MillMachinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mill_machine_params
-      params.require(:mill_machine).permit(:machine_id, :quantity)
+      params.require(:mill_machine).permit(:machine_id, :quantity, :spindles)
     end
 
     def set_breadcrumbs

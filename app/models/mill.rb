@@ -36,6 +36,10 @@ class Mill < ApplicationRecord
     code.downcase!
   end
 
+  def total_spindles
+    mill_machines.map(&:spindles_count).sum
+  end
+
   def update_potential
     self.potential = calculate_potential
     save

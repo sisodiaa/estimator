@@ -7,7 +7,10 @@
 </div>
 
 <div class="row">
-	<p><strong>Potential for <%= @mill.code %></strong>: <%= rupee_format(@mill.potential) %></p>
+	<div class="col">
+		<p class="mb-1"><strong>Potential for <%= @mill.code %></strong>: <%= rupee_format(@mill.potential) %></p>
+		<p><strong>Total Spindles in <%= @mill.code %></strong>: <%= @mill.total_spindles %></p>
+	</div>
 </div>
 
 <div class="row">
@@ -17,7 +20,9 @@
 				<th scope="col">Section</th>
 				<th scope="col">Maker</th>
 				<th scope="col">Model</th>
-				<th scope="col">Units</th>
+				<th scope="col">Quantity</th>
+				<th scope="col">Spindles <span class="font-weight-light">(per machine)</span></th>
+				<th scope="col">Spindles Count</th>
 				<th scope="col">Potential</th>
 				<th scope="col"></th>
 			</tr>
@@ -30,6 +35,8 @@
 					<td><%= mill_machine.machine.make.titleize %></td>
 					<td><%= mill_machine.machine.model %></td>
 					<td><%= mill_machine.quantity %></td>
+					<td><%= mill_machine.spindles %></td>
+					<td><%= mill_machine.spindles_count %></td>
 					<td><%= rupee_format(mill_machine.potential) %></td>
 					<td class="btn-group pt-2">
 						<%= link_to 'Show', mill_machine_path(@mill, mill_machine), class: 'btn btn-sm btn-outline-secondary' %>

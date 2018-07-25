@@ -75,7 +75,8 @@ class MachinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def machine_params
-      params.require(:machine).permit(:make, :model, :section, :sub_section)
+      params.require(:machine)
+        .permit(:make, :model, :section, :sub_section, :drive_type)
         .merge(via_form: true)
     end
 end

@@ -18,8 +18,8 @@ class Belt < ApplicationRecord
   # Validations
   validates :grade, presence: true, uniqueness: true
   validates :rate, presence: true, numericality: { greater_than: 0 }
-  validates :minor_join_charge, presence: true, inclusion: { in: [0, 250, 500] }
-  validates :major_join_charge, presence: true, inclusion: { in: [0, 250, 500] }
+  validates :minor_join_charge, presence: true, inclusion: { in: [0, 250, 500, 1000] }
+  validates :major_join_charge, presence: true, inclusion: { in: [0, 250, 500, 1000] }
   validates :rounding_off, presence: true, inclusion: { in: [0, 1, 2]  }
 
 

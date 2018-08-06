@@ -13,7 +13,7 @@ class Machine < ApplicationRecord
 
 
   # Callbacks
-  before_save :set_attributes_case, if: :via_form?
+  before_validation :set_attributes_case, if: :via_form?
   after_save :update_mill_machine_potential, unless: :via_form?
 
 
@@ -21,6 +21,7 @@ class Machine < ApplicationRecord
   validates :make, presence: true
   validates :model, presence: true
   validates :section, presence: true
+  validates_uniqueness_of :model, scope: :make
 
 
   # Methods

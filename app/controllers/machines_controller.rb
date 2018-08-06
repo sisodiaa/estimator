@@ -6,7 +6,7 @@ class MachinesController < ApplicationController
   # GET /machines
   # GET /machines.json
   def index
-    @machines = Machine.all.order(id: :asc)
+    @machines = Machine.all.order(section: :asc, make: :asc, model: :asc)
   end
 
   # GET /machines/1

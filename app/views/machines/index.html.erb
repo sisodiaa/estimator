@@ -10,9 +10,9 @@
 	<table class="table table-striped">
 		<thead class="thead-dark">
 			<tr>
+				<th scope="col">Section</th>
 				<th scope="col">Make</th>
 				<th scope="col">Model</th>
-				<th scope="col">Section</th>
 				<th scope="col">Sub section</th>
 				<th scope="col">Drive Type</th>
 				<th scope="col">Potential</th>
@@ -23,9 +23,9 @@
 		<tbody>
 			<% @machines.each do |machine| %>
 				<tr>
+					<td><%= machine.section.titleize %></td>
 					<td><%= machine.make.titleize %></td>
 					<td><%= machine.model %></td>
-					<td><%= machine.section.titleize %></td>
 					<td><%= machine.sub_section.titleize %></td>
 					<td><%= machine.drive_type %></td>
 					<td><%= rupee_format(machine.potential) %></td>

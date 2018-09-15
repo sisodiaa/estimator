@@ -1,14 +1,18 @@
-<tr>
-	<%= render partial: 'type_machine_mill_result_first',
-		locals: {
-			rowspan: result.mill_machines.size,
-			mill: result.mill,
-			mill_machine: result.mill_machines.first,
-			sum: result.sum
-		}
-	%>
-</tr>
-<%= render partial: 'type_machine_mill_result_reaminder',
-					 collection: result.mill_machines[1..-1],
-					 as: 'mill_machine'
-%>
+<% if result.mill_machines.any? %>
+	<tr>
+		<%= render partial: 'type_machine_mill_result_first',
+			locals: {
+				rowspan: result.mill_machines.size,
+				mill: result.mill,
+				mill_machine: result.mill_machines.first,
+				sum: result.sum
+			}
+		%>
+	</tr>
+	<% if result.mill_machines[1..-1].any? %>
+		<%= render partial: 'type_machine_mill_result_reaminder',
+							 collection: result.mill_machines[1..-1],
+							 as: 'mill_machine'
+		%>
+	<% end %>
+<% end %>

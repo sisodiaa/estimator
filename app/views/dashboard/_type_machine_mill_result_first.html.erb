@@ -1,11 +1,12 @@
 <td class="align-middle" rowspan="<%= rowspan %>"><%= mill.code %></td>
 <td class="align-middle" rowspan="<%= rowspan %>"><%= mill.name.titleize %></td>
 <td class="align-middle" rowspan="<%= rowspan %>"><%= sum %></td>
-<% unless mill_machine.machine.nil? %>
+<% unless mill_machine.nil? %>
 	<td><%= mill_machine.machine.section.titleize %></td>
 	<td><%= mill_machine.machine.machine_name %></td>
+	<td><%= mill_machine.quantity %></td>
 <% else %>
 	<td>NA</td>
 	<td>NA</td>
+	<td>NA</td>
 <% end %>
-<td><%= mill_machine.quantity %></td>

@@ -3,6 +3,7 @@ document.addEventListener("turbolinks:load", function() {
   var makerDropdown = document.getElementById('maker');
   var modelDropdown = document.getElementById('model');
   var gradeDropdown = document.getElementById('grade');
+  var millMachineMachineID = document.getElementById('mill_machine_machine_id');
 
   if (sectionDropdown) {
     sectionDropdown.selectedIndex = "0";
@@ -21,10 +22,17 @@ document.addEventListener("turbolinks:load", function() {
 
   if (modelDropdown) {
     modelDropdown.addEventListener('change', function() {
-      var button = document.getElementById('search_1');
-      button.setAttribute('disabled', true)
-      if (modelDropdown.value) {
-        button.removeAttribute('disabled');
+      if (millMachineMachineID) {
+        var url = constructURL(['make', 'model'], [makerDropdown.value, modelDropdown.value], ['id']);
+        var millMachineMachineName = document.getElementById('mill_machine_machine_name');
+        millMachineMachineName.value = toTitleCase(makerDropdown.value) + ' ' + modelDropdown.value;
+        dropDownChange(modelDropdown, millMachineMachineID, url);
+      } else {
+        var button = document.getElementById('search_1');
+        button.setAttribute('disabled', true)
+        if (modelDropdown.value) {
+          button.removeAttribute('disabled');
+        }
       }
     });
   }
@@ -57,8 +65,10 @@ var constructURL = function(keys, values, attributes) {
 };
 
 var dropDownChange = function(el1, el2, url) {
-  el2.setAttribute('disabled', true);
-  el2.length = 0;
+  if (el2.nodeName === "SELECT") {
+    el2.setAttribute('disabled', true);
+    el2.length = 0;
+  }
 
   if (el1.value) {
     ajaxRequest(el2, url);
@@ -87,14 +97,18 @@ var ajaxOnload = function(el, request) {
     var resp = request.responseText;
     var data = JSON.parse(resp);
 
-    addOptionToDropdown(el, ['', '']);
-    addOptionToDropdown(el, ['All', 'all']);
+    if (el.nodeName === "SELECT") {
+      addOptionToDropdown(el, ['', '']);
+      addOptionToDropdown(el, ['All', 'all']);
 
-    for (var i = 0; i < data.length; i++) {
-      addOptionToDropdown(el, data[i]);
+      for (var i = 0; i < data.length; i++) {
+        addOptionToDropdown(el, data[i]);
+      }
+
+      el.removeAttribute('disabled');
+    } else {
+      el.value = data[0];
     }
-
-    el.removeAttribute('disabled');
   } else {
     // We reached our target server, but it returned an error
     console.log('Error');
@@ -108,7 +122,11 @@ var addOptionToDropdown = function(el, data) {
     option.text = data[0];
   } else {
     option.value = data;
-    option.text = data.charAt(0).toUpperCase() + data.slice(1);
+    option.text = toTitleCase(data);
   }
   el.add(option);
 };
+
+var toTitleCase = function(str) {
+  return(str.charAt(0).toUpperCase() + str.slice(1));
+}

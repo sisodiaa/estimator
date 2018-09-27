@@ -16,8 +16,7 @@
 		<%= form.select :machine_id,
 			grouped_options_for_select(machines_list, [mill_machine.machine_id]),
 			{ prompt: 'Select a machine' },
-			class: 'form-control',
-			disabled: mill_machine.new_record? ? false : true
+			class: 'form-control'
 		%>
   </div>
 

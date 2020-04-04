@@ -20,6 +20,7 @@
 				<th scope="col">Section</th>
 				<th scope="col">Maker</th>
 				<th scope="col">Model</th>
+				<th scope="col">Drive Type</th>
 				<th scope="col">Quantity</th>
 				<th scope="col">Spindles <span class="font-weight-light">(per machine)</span></th>
 				<th scope="col">Spindles Count</th>
@@ -34,6 +35,7 @@
 					<td><%= mill_machine.machine.section.titleize %></td>
 					<td><%= mill_machine.machine.make.titleize %></td>
 					<td><%= mill_machine.machine.model %></td>
+					<td><%= mill_machine.machine.drive_type %></td>
 					<td><%= mill_machine.quantity %></td>
 					<td><%= mill_machine.spindles %></td>
 					<td><%= mill_machine.spindles_count %></td>
